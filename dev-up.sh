@@ -1,4 +1,6 @@
+#!/bin/bash
+
 docker compose up -d
 docker exec -it project-api composer install
 cp example.env .env
-curl http://localhost/api/v1/demo
+curl http://localhost:80/api/v1/demo

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 docker compose down
 rm -rf vendor
 rm -rf .env
