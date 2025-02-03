@@ -1,5 +1,8 @@
 #!/bin/bash
 
+mv example.gitignore .gitignore
+mv example.htaccess .htaccess
+
 CURRENT_PROY=project
 PROY=project
 
