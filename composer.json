@@ -5,6 +5,6 @@
     }
   },
   "require": {
-    "coagus/php-api-builder": "^0.7.0"
+    "coagus/php-api-builder": "^0.7.3"
   }
 }
