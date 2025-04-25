@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mv example.gitignore .gitignore
-mv example.htaccess .htaccess
+cp example.gitignore .gitignore
+cp example.htaccess .htaccess
 
 CURRENT_PROY=project
 PROY=project
@@ -18,12 +18,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     sed -i '' "s/$CURRENT_PORT_DB:/$PORT_DB:/g" docker-compose.yml
     sed -i '' "s/$CURRENT_PORT_API:/$PORT_API:/g" docker-compose.yml
     sed -i '' "s/$CURRENT_PROY/$PROY/g" dev-up.sh
-    sed -i '' "s/:$CURRENT_PORT_API/:$PORT_API/g" dev-up.sh    
+    sed -i '' "s/:$CURRENT_PORT_API/:$PORT_API/g" dev-up.sh
+    sed -i '' "s/$CURRENT_PROY/$PROY/g" .env
 else
     # Linux y otros sistemas
     sed -i "s/$CURRENT_PROY/$PROY/g" docker-compose.yml
     sed -i "s/$CURRENT_PORT_DB:/$PORT_DB:/g" docker-compose.yml
     sed -i "s/$CURRENT_PORT_API:/$PORT_API:/g" docker-compose.yml
     sed -i "s/$CURRENT_PROY/$PROY/g" dev-up.sh
-    sed -i "s/:$CURRENT_PORT_API/:$PORT_API/g" dev-up.sh    
+    sed -i "s/:$CURRENT_PORT_API/:$PORT_API/g" dev-up.sh
+    sed -i "s/$CURRENT_PROY/$PROY/g" .env
 fi

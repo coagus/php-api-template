@@ -2,22 +2,20 @@ services:
   mysql:
     build:
       context: ./resources/docker/mysql
-    image: mysql-server:latest
+    image: mysql-server:project
     container_name: project-db
     environment:
       MYSQL_DATABASE: apidb
       MYSQL_USER: admin
       MYSQL_PASSWORD: Adm1ns
       MYSQL_ROOT_PASSWORD: Adm1ns
-      MYSQL_ROOT_HOST: '%'
-    command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306"
     restart: always
   php:
     build:
       context: ./resources/docker/php
-    image: php-server:latest
+    image: php-server:project
     container_name: project-api
     ports:
       - "80:80"

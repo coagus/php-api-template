@@ -1,12 +1,30 @@
--- CREATE TABLES AND INSERT DATA
+CREATE TABLE
+  `roles` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `role` varchar(30) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`role`)
+  );
 
+INSERT INTO
+  roles (role)
+VALUES
+  ('Administrator'),
+  ('Operator');
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
-ENGINE = InnoDB;
+CREATE TABLE
+  `users` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NOT NULL,
+    `username` varchar(50) NOT NULL,
+    `password` varchar(150) NOT NULL,
+    `email` varchar(70) NOT NULL,
+    `active` tinyint DEFAULT 0,
+    `role_id` int NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `fk_users_roles_idx` (`role_id`),
+    CONSTRAINT `fk_users_roles` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+    UNIQUE (`username`)
+  );
 
-INSERT INTO users (username, password) VALUES('agustin', 'mypa$$');
+COMMIT;
